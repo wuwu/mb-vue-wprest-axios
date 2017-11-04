@@ -1,6 +1,9 @@
 <template>
     <div class="hello">
-        <h1>Musikblog.de</h1>
+        <h2 class="padTop">Entdecke neue Musik...</h2>
+        <h2>share music with your soul brothers & sisters</h2>
+        <h2>have a good time</h2>
+        <h2><strong>peace & love</strong></h2>
         <ul v-if="posts && posts.length">
             <li v-for="post of posts">
                 <img class="thumbnail" :src="post.better_featured_image.media_details.sizes.medium.source_url"/>
@@ -19,37 +22,28 @@
 </template>
 
 <script>
-  import axios from 'axios'
+//  import axios from 'axios'
+  import { mapActions, mapState } from 'vuex'
 
   export default {
     data () {
       return {
-        posts: [],
         errors: []
       }
     },
+    computed: {
+      ...mapState({
+        posts: state => state.posts
+      })
+    },
     // Fetches posts when the component is created.
     created () {
-      // http://dev.musikblog.de1.cc/wp-json/wp/v2/posts
-      // axios.get('http://jsonplaceholder.typicode.com/posts')
-      axios.get('http://dev.musikblog.de1.cc/wp-json/wp/v2/posts')
-          .then(response => {
-            // JSON responses are automatically parsed.
-            this.posts = response.data
-            console.log(this.posts.length())
-          })
-          .catch(e => {
-            this.errors.push(e)
-          })
-
-      // async / await version (created() becomes async created())
-      //
-      // try {
-      //   const response = await axios.get(`http://jsonplaceholder.typicode.com/posts`)
-      //   this.posts = response.data
-      // } catch (e) {
-      //   this.errors.push(e)
-      // }
+      this.loadPosts()
+    },
+    methods: {
+      ...mapActions({
+        loadPosts: 'loadPosts'
+      })
     }
   }
 </script>
@@ -59,7 +53,13 @@
     h1, h2 {
         font-weight: normal;
     }
-
+    h2{
+        margin: 0;
+        padding: 0;
+    }
+    .padTop{
+        padding-top: 30px;
+    }
     ul {
         list-style-type: none;
         padding: 0;
