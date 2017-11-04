@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" viewBox="0 0 192 192">
+  <g fill="none" fill-rule="evenodd">
+    <circle cx="96" cy="96" r="96" fill="#324A5E"/>
+    <g fill="#37B685" transform="translate(26 48)">
+      <polygon points="79.398 96 79.398 38.811 55.104 67.886 50.353 67.886 26.602 38.949 26.602 96 0 96 0 0 28.095 0 53.068 32.503 78.041 0 106 0 106 96"/>
+      <polygon points="159 0 159 96 115 48.001" transform="matrix(-1 0 0 1 274 0)"/>
+    </g>
+  </g>
+</svg>
