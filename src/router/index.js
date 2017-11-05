@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
-import Videos from '@/components/Videos'
+import HelloWorld from '@/pages/HelloWorld'
+import Videos from '@/pages/demos/Videos'
 Vue.use(Router)
 
 export default new Router({

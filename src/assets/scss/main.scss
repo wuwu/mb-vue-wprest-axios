@@ -1,14 +1,11 @@
-@import url('https://fonts.googleapis.com/css?family=Lato:100,300,400,400i,700,700i|Open+Sans:300,400,400i,600,700,700i,800');
 @import './abstracts/mixins';
 @import './abstracts/settings';
-@import './font-awesome/font-awesome';
-@import './forms/forms';
-@import './pages/edit-places';
 @import '../../../node_modules/bulma/bulma';
+
 body{
   width: 100vw;
   min-height: 100vh;
-  background: $color-body-background;
+  background: $white;
   border: solid 10px $primary;
   font-family: 'Open Sans', sans-serif;
 }

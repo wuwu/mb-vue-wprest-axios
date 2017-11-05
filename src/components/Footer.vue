@@ -7,7 +7,7 @@
         </router-link>
     </div>
 </footer>
-</template>
+</template>abanaly
 
 <script type="text/babel">
   export default {

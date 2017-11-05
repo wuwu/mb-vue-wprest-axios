@@ -1,5 +1,5 @@
 <template>
-    <router-link to="/"><img src="../assets/logo.svg"></router-link>
+    <router-link to="/"><img src="../assets/svg/logo.svg"></router-link>
 </template>
 
 <script type="text/babel">
