@@ -1,5 +1,6 @@
 @import './abstracts/mixins';
 @import './abstracts/settings';
+@import './materialdesignicons/materialdesignicons';
 @import '../../../node_modules/bulma/bulma';
 
 body{
@@ -10,7 +11,6 @@ body{
   font-family: 'Open Sans', sans-serif;
 }
 #app{
-  color: #fff;
   min-height: calc(100vh - 20px);
   display: flex;
   flex-direction: column;
@@ -20,7 +20,7 @@ body{
   flex-grow: 1;
 }
 .container {
-  width: 100%;
+  max-width: 768px;
   margin-top: 2.75rem;
 }
 .columns{

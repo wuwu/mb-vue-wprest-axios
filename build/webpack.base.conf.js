@@ -24,6 +24,7 @@ module.exports = {
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
+      "icons": path.resolve(__dirname, "node_modules/vue-material-design-icons")
     }
   },
   module: {

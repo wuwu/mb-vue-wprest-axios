@@ -4012,6 +4012,10 @@ negotiator@0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.1.tgz#2b327184e8992101177b28563fb5e7102acd0ca9"
 
+netlify-identity-widget@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/netlify-identity-widget/-/netlify-identity-widget-1.2.0.tgz#c3cb2498b3550fae4deb133de17ff6a3b2cb6ebf"
+
 nise@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/nise/-/nise-1.2.0.tgz#079d6cadbbcb12ba30e38f1c999f36ad4d6baa53"
@@ -6059,6 +6063,10 @@ vue-loader@^13.3.0:
     vue-hot-reload-api "^2.2.0"
     vue-style-loader "^3.0.0"
     vue-template-es2015-compiler "^1.6.0"
+
+vue-material-design-icons@^0.7.1:
+  version "0.7.1"
+  resolved "https://registry.yarnpkg.com/vue-material-design-icons/-/vue-material-design-icons-0.7.1.tgz#3cbe06a1ec93ac3d333160c28a45dbb52ef98364"
 
 vue-media-embed@^1.0.0:
   version "1.0.0"

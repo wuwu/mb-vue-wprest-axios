@@ -1,5 +1,5 @@
 <template>
-    <div class="hello">
+    <div class="container">
         <h2 class="padTop">Entdecke neue Musik...</h2>
         <h2>share music with your soul brothers & sisters</h2>
         <h2>have a good time</h2>
@@ -38,7 +38,9 @@
     },
     // Fetches posts when the component is created.
     created () {
-      this.loadPosts()
+      if (!this.posts.length) {
+        this.loadPosts()
+      }
     },
     methods: {
       ...mapActions({
@@ -49,16 +51,23 @@
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
+<style lang="scss" scoped>
+    @import "../assets/scss/abstracts/settings";
     h1, h2 {
         font-weight: normal;
+        font-size: 1.5rem;
     }
     h2{
         margin: 0;
         padding: 0;
+        color: $secondary;
+        text-align: center;
     }
     .padTop{
-        padding-top: 30px;
+        color: $primary;
+    }
+    .container{
+        margin-top: 0;
     }
     ul {
         list-style-type: none;
@@ -74,7 +83,7 @@
         margin: 30px 3px 15px 3px;
         max-width: 240px;
         padding-bottom: 0 5px 15px 5px;
-        border-bottom: 1px solid #bada55;
+        border-bottom: 1px solid $secondary;
     }
     .thumbnail{
         max-width: 240px;
@@ -83,5 +92,8 @@
     }
     a {
         color: #35495E;
+    }
+    .button--login{
+        margin: 15px 0;
     }
 </style>

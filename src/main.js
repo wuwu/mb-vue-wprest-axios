@@ -6,6 +6,10 @@ import { sync } from 'vuex-router-sync'
 import App from './App'
 import router from './router'
 import store from './store'
+import netlifyIdentity from 'netlify-identity-widget'
+import registerServiceWorker from './ServiceWorker'
+
+netlifyIdentity.init()
 
 require('@/assets/scss/main.scss')
 
@@ -20,3 +24,4 @@ new Vue({
   template: '<App/>',
   components: { App }
 })
+registerServiceWorker()
