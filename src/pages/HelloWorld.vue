@@ -1,15 +1,23 @@
 <template>
     <div class="container">
+        <div v-if="is" class="container logo">
+            <router-link to="/"><img src="../assets/svg/logo.svg"></router-link>
+        </div>
         <h2 class="padTop">Entdecke neue Musik...</h2>
         <h2>share music with your soul brothers & sisters</h2>
         <h2>have a good time</h2>
         <h2><strong>peace & love</strong></h2>
-        <ul v-if="posts && posts.length">
-            <li v-for="post of posts">
+        <ul v-if="posts && posts.length" class="posts">
+            <li v-for="post of posts"
+                key="post.index"
+                class="post"
+                @click.prevent="navigateToPost({id: post.id, slug: post.slug})">
                 <img class="thumbnail" :src="post.better_featured_image.media_details.sizes.medium.source_url"/>
                 <h3 v-html="post.title.rendered"></h3>
                 <p v-html="post.excerpt.rendered"></p>
                 <p vhtml="post.media"></p>
+                <router-link :to="{ name: 'Post', params: { id: post.id, slug: post.slug }}">read more</router-link>
+                <a @click.prevent="navigateToPost({id: post.id, slug: post.slug})">read Post</a>
             </li>
         </ul>
 
@@ -44,8 +52,14 @@
     },
     methods: {
       ...mapActions({
-        loadPosts: 'loadPosts'
-      })
+        loadPosts: 'loadPosts',
+        readPost: 'navigateToPost'
+      }),
+      navigateToPost (e) {
+        console.log(e.id, e.slug)
+        this.readPost(e.id)
+        this.$router.push({name: 'Post', params: { slug: e.slug }})
+      }
     }
   }
 </script>
@@ -84,6 +98,7 @@
         max-width: 240px;
         padding-bottom: 0 5px 15px 5px;
         border-bottom: 1px solid $secondary;
+        cursor: pointer;
     }
     .thumbnail{
         max-width: 240px;
