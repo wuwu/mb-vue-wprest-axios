@@ -11,7 +11,7 @@
                 </div>
                 <div class="column">
                     <h2>pure_taxonomies plugin</h2>
-                    <pre>{{taxonomy}}</pre>
+                    <pre>{{post}}</pre>
                 </div>
                 <div class="column">
                     <h2>pure_taxonomies plugin</h2>

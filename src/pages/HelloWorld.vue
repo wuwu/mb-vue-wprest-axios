@@ -4,14 +4,15 @@
             <ul v-if="posts && posts.length" class="posts">
                 <li v-for="post of posts"
                     key="post.index"
-                    class="post tile"
+                    class="post"
                     @click.prevent="navigateToPost({id: post.id, slug: post.slug})">
-                    <img class="thumbnail" :src="post.better_featured_image.media_details.sizes.medium.source_url"/>
-                    <h3 v-html="post.title.rendered"></h3>
-                    <p v-html="post.excerpt.rendered"></p>
-                    <p vhtml="post.media"></p>
-                    <router-link :to="{ name: 'Post', params: { id: post.id, slug: post.slug }}">read more</router-link>
-                    <a @click.prevent="navigateToPost({id: post.id, slug: post.slug})">read Post</a>
+                    <img class="thumbnail" :src="post.better_featured_image.media_details.sizes.medium_large.source_url"/>
+                    <div class="card--inner">
+                        <h3 class="is-size-3-mobile has-text-black-ter	has-text-weight-semibold	" v-html="post.title.rendered"></h3>
+                        <p v-html="post.excerpt.rendered"></p>
+                        <p vhtml="post.media"></p>
+                        <a @click.prevent="navigateToPost({id: post.id, slug: post.slug})">read Post</a>
+                    </div>
                 </li>
             </ul>
         </div>
@@ -111,15 +112,17 @@
 
     li {
         display: inline-block;
-        margin: 30px 3px 15px 3px;
-        padding-bottom: 0 5px 15px 5px;
-        border-bottom: 1px solid $secondary;
+        margin: 0;
+        padding: 0 0 15px 0;
         cursor: pointer;
     }
     .thumbnail{
-        max-width: 240px;
+        /*max-width: 240px;*/
         /*-webkit-filter: grayscale(1);*/
         /*filter: grayscale(1);*/
+    }
+    .card--inner{
+        margin: 0 15px;
     }
     a {
         color: #35495E;
