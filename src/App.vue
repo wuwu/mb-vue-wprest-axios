@@ -1,7 +1,7 @@
 <template>
     <div id="app">
         <app-header></app-header>
-        <router-view/>
+        <router-view class="site-content"/>
         <app-footer></app-footer>
         <div ref="loginModal" id="#netlify-modal"></div>
     </div>
@@ -63,13 +63,13 @@ export default {
 }
 </script>
 
-<<style lang="scss" scoped>
-    >
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<style lang="scss" scoped>
+    #app {
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
+    }
+    .site-content{
+        flex: 1;
+    }
 </style>

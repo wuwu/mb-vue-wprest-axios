@@ -49,7 +49,7 @@ const store = new Vuex.Store({
       console.log('store loadPosts')
       return api.getPosts().then((response) => {
         commit(POSTS_LOADED, response)
-        commit(IS_LOADING, false)
+        commit('setLoading', false)
       }).catch((error) => {
         console.log(error)
         commit('setLoading', false)
