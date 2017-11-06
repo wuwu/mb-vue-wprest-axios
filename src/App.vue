@@ -34,16 +34,16 @@ export default {
   },
   mounted () {
     // Bind to events
-    netlifyIdentity.on('init', user => console.log('netlifyIdentity', user))
-    netlifyIdentity.on('login', user => console.log('netlify login', user))
-    netlifyIdentity.on('logout', () => console.log('Logged out'))
-    netlifyIdentity.on('error', err => console.error('error', err))
-    netlifyIdentity.on('open', () => console.log('Widget opened'))
-    netlifyIdentity.on('close', () => {
-      console.log('Widget closed')
-      const _self = this
-      _self.$store.dispatch('showModal', false)
-    })
+//    netlifyIdentity.on('init', user => console.log('netlifyIdentity', user))
+//    netlifyIdentity.on('login', user => console.log('netlify login', user))
+//    netlifyIdentity.on('logout', () => console.log('Logged out'))
+//    netlifyIdentity.on('error', err => console.error('error', err))
+//    netlifyIdentity.on('open', () => console.log('Widget opened'))
+//    netlifyIdentity.on('close', () => {
+//      console.log('Widget closed')
+//      const _self = this
+//      _self.$store.dispatch('showModal', false)
+//    })
   },
   methods: {
     onLogin () {
