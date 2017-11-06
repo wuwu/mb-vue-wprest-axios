@@ -79,9 +79,6 @@
                 </div>
             </div>
         </nav>
-        <div class="container logo">
-            <router-link to="/"><img src="../assets/svg/logo.svg"></router-link>
-        </div>
     </div>
 </template>
 
