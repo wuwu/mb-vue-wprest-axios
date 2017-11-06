@@ -2,6 +2,16 @@
     <div class="header">
         <nav class="navbar is-transparent">
             <div class="navbar-brand">
+                <router-link to="/" class="navbar-item logo">
+                    <figure class="image svg is-48x48">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="112" height="68" viewBox="0 0 112 68">
+                            <g fill="#37B685" fill-rule="evenodd">
+                                <polygon points="56.16 67.2 56.16 27.168 38.976 47.52 35.616 47.52 18.816 27.264 18.816 67.2 0 67.2 0 0 19.872 0 37.536 22.752 55.2 0 74.976 0 74.976 67.2"/>
+                                <polygon points="112 0 112 67.5 81 33.751" transform="matrix(-1 0 0 1 193 0)"/>
+                            </g>
+                        </svg>
+                    </figure>
+                </router-link>
                 <a @click.prevent="onLogin" class="navbar-item is-hidden-desktop" href="#" target="_blank">
                   <span class="icon">
                     <i class="mdi mdi-36px mdi mdi-account-circle"></i>
@@ -120,16 +130,11 @@
           margin: 0;
         }
     }
-    .logo {
-        margin-bottom: 15px;
-        margin-top: 0;
-        a{
-            display: block;
-            margin: 0 auto;
-            text-align: center;
-        }
-    }
     .button--login{
         border: none;
+    }
+    figure svg{
+        width: 48px;
+        height: 48px;
     }
 </style>
