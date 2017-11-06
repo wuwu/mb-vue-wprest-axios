@@ -3978,6 +3978,10 @@ mocha@^3.2.0:
     mkdirp "0.5.1"
     supports-color "3.1.2"
 
+moment@^2.11.1:
+  version "2.19.1"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.19.1.tgz#56da1a2d1cbf01d38b7e1afc31c10bcfa1929167"
+
 ms@0.7.1:
   version "0.7.1"
   resolved "https://registry.yarnpkg.com/ms/-/ms-0.7.1.tgz#9cd13c03adbff25b65effde7ce864ee952017098"
@@ -6064,13 +6068,15 @@ vue-loader@^13.3.0:
     vue-style-loader "^3.0.0"
     vue-template-es2015-compiler "^1.6.0"
 
-vue-material-design-icons@^0.7.1:
-  version "0.7.1"
-  resolved "https://registry.yarnpkg.com/vue-material-design-icons/-/vue-material-design-icons-0.7.1.tgz#3cbe06a1ec93ac3d333160c28a45dbb52ef98364"
-
 vue-media-embed@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/vue-media-embed/-/vue-media-embed-1.0.0.tgz#a2069404f48ea6e0d0aebd75d75ba8b3d9360555"
+
+vue-moment@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/vue-moment/-/vue-moment-2.1.0.tgz#c738b5fe73bef79eb17670ffddea408275d18609"
+  dependencies:
+    moment "^2.11.1"
 
 vue-router@^3.0.1:
   version "3.0.1"
