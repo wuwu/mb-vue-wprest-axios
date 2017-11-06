@@ -6,7 +6,7 @@
 body{
   width: 100vw;
   min-height: 100vh;
-  background: $white;
+  background: darken($white, 3);
   border: solid 10px $primary;
   font-family: 'Open Sans', sans-serif;
 }
