@@ -12,6 +12,16 @@ exports.assetsPath = function (_path) {
 
 exports.cssLoaders = function (options) {
   options = options || {}
+  // This makes my vars and mixins avail throughout my app at a global level
+
+  let scssOptions = {
+    includePaths: [
+      './src/assets/scss'
+    ],
+    data:
+    '@import "./src/assets/scss/abstracts/settings";' +
+    '@import "./src/assets/scss/abstracts/mixins";'
+  }
 
   const cssLoader = {
     loader: 'css-loader',
@@ -51,7 +61,7 @@ exports.cssLoaders = function (options) {
     postcss: generateLoaders(),
     less: generateLoaders('less'),
     sass: generateLoaders('sass', { indentedSyntax: true }),
-    scss: generateLoaders('sass'),
+    scss: generateLoaders('sass', scssOptions),
     stylus: generateLoaders('stylus'),
     styl: generateLoaders('stylus')
   }
