@@ -7,13 +7,15 @@ import App from './App'
 import router from './router'
 import store from './store'
 import netlifyIdentity from 'netlify-identity-widget'
-import registerServiceWorker from './ServiceWorker'
+
+// import registerServiceWorker from './ServiceWorker'
 
 netlifyIdentity.init()
 
 require('@/assets/scss/main.scss')
 
-Vue.config.productionTip = false
+Vue.use(require('vue-moment'))
+
 sync(store, router)
 
 /* eslint-disable no-new */
@@ -24,4 +26,7 @@ new Vue({
   template: '<App/>',
   components: { App }
 })
-registerServiceWorker()
+
+// registerServiceWorker()
+
+Vue.config.productionTip = false
