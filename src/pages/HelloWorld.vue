@@ -1,17 +1,10 @@
 <template>
-    <div class="router-view">
-        <div class="container logo">
-            <router-link to="/"><img src="../assets/svg/logo.svg"></router-link>
-        </div>
-        <h2 class="padTop">Entdecke neue Musik...</h2>
-        <h2>share music with your soul brothers & sisters</h2>
-        <h2>have a good time</h2>
-        <h2><strong>peace & love</strong></h2>
-        <div v-if="isLoadingPosts" class="container">
+    <div>
+        <div v-if="!isLoadingPosts" class="container">
             <ul v-if="posts && posts.length" class="posts">
                 <li v-for="post of posts"
                     key="post.index"
-                    class="post"
+                    class="post tile"
                     @click.prevent="navigateToPost({id: post.id, slug: post.slug})">
                     <img class="thumbnail" :src="post.better_featured_image.media_details.sizes.medium.source_url"/>
                     <h3 v-html="post.title.rendered"></h3>
@@ -22,8 +15,17 @@
                 </li>
             </ul>
         </div>
-        <div v-else class="container container--loading">
-            <h1 class="title is-1 has-text-centered has-text-primary has-text-weight-bold	">Loading Data...</h1>
+        <div v-else class="container">
+            <h2 class="padTop">Entdecke neue Musik...</h2>
+            <div class="logo">
+                <img src="../assets/svg/logo.svg">
+            </div>
+            <h2>share music with your soul brothers & sisters</h2>
+            <h2>have a good time</h2>
+            <h2><strong>peace & love</strong></h2>
+            <div class="container--loading">
+                <h1 class="title is-1 has-text-centered has-text-primary has-text-weight-bold	">Loading Data...</h1>
+            </div>
         </div>
         <ul v-if="errors && errors.length">
             <li v-for="error of errors">
@@ -46,14 +48,14 @@
     computed: {
       ...mapState({
         posts: state => state.posts,
-        isLoadingPosts: state => state.isLoading
+        isLoadingPosts: state => state.loading
       })
     },
     // Fetches posts when the component is created.
     mounted () {
       if (!this.posts.length) {
         console.log('loading posts')
-        // this.loadPosts()
+        this.loadPosts()
       }
     },
     methods: {
@@ -93,10 +95,10 @@
         width: 320px;
         border: solid 1px $primary;
         padding: 45px 0;
-        margin-top: 45px;
+        margin: 45px auto;
     }
     .logo{
-        margin: 15px 30px 15px 30px;
+        margin: 45px 30px 45px 30px;
     }
     ul {
         list-style-type: none;
@@ -110,7 +112,6 @@
     li {
         display: inline-block;
         margin: 30px 3px 15px 3px;
-        max-width: 240px;
         padding-bottom: 0 5px 15px 5px;
         border-bottom: 1px solid $secondary;
         cursor: pointer;

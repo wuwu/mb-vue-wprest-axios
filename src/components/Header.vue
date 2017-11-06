@@ -3,13 +3,14 @@
         <nav class="navbar is-transparent">
             <div class="navbar-brand">
                 <router-link to="/" class="navbar-item logo">
-                    <figure class="image svg is-48x48">
+                    <figure class="image svg">
                         <svg xmlns="http://www.w3.org/2000/svg" width="112" height="68" viewBox="0 0 112 68">
-                            <g fill="#37B685" fill-rule="evenodd">
-                                <polygon points="56.16 67.2 56.16 27.168 38.976 47.52 35.616 47.52 18.816 27.264 18.816 67.2 0 67.2 0 0 19.872 0 37.536 22.752 55.2 0 74.976 0 74.976 67.2"/>
-                                <polygon points="112 0 112 67.5 81 33.751" transform="matrix(-1 0 0 1 193 0)"/>
+                            <g fill="none" fill-rule="evenodd">
+                                <polygon fill="#2C2B2D" points="56.16 67.2 56.16 27.168 38.976 47.52 35.616 47.52 18.816 27.264 18.816 67.2 0 67.2 0 0 19.872 0 37.536 22.752 55.2 0 74.976 0 74.976 67.2"/>
+                                <polygon fill="#37B685" points="112 0 112 67.5 81 33.751" transform="matrix(-1 0 0 1 193 0)"/>
                             </g>
                         </svg>
+                        <small>musikblog.de</small>
                     </figure>
                 </router-link>
                 <a @click.prevent="onLogin" class="navbar-item is-hidden-desktop" href="#" target="_blank">
@@ -28,7 +29,6 @@
                     <span></span>
                 </div>
             </div>
-
             <div id="navMenuTransparentExample" class="navbar-menu" :class="{'is-active': active}">
                 <div class="navbar-start">
                     <div class="navbar-item has-dropdown is-hoverable">
@@ -89,6 +89,7 @@
                 </div>
             </div>
         </nav>
+
     </div>
 </template>
 
@@ -130,11 +131,19 @@
           margin: 0;
         }
     }
+    .logo{
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+    }
     .button--login{
         border: none;
     }
-    figure svg{
-        width: 48px;
-        height: 48px;
+    figure {
+        margin-bottom: 0;
+        svg{
+            width: 48px;
+            height: 30px;
+        }
     }
 </style>

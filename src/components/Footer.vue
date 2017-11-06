@@ -1,7 +1,6 @@
 <template>
 <footer>
     <div class="nav">
-        Demos:
         <router-link :to="{name: 'Videos'}" tag="button" class="button">
             Embedded Video
         </router-link>
@@ -22,7 +21,7 @@
 
 <style lang="scss" scoped>
 footer{
-    background-color: #37B685;
+    background-color: $primary;
     width: 100%;
     padding: 15px;
     margin: 0;
