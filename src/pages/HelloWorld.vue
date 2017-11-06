@@ -1,26 +1,30 @@
 <template>
-    <div class="container">
-        <div v-if="is" class="container logo">
+    <div class="router-view">
+        <div class="container logo">
             <router-link to="/"><img src="../assets/svg/logo.svg"></router-link>
         </div>
         <h2 class="padTop">Entdecke neue Musik...</h2>
         <h2>share music with your soul brothers & sisters</h2>
         <h2>have a good time</h2>
         <h2><strong>peace & love</strong></h2>
-        <ul v-if="posts && posts.length" class="posts">
-            <li v-for="post of posts"
-                key="post.index"
-                class="post"
-                @click.prevent="navigateToPost({id: post.id, slug: post.slug})">
-                <img class="thumbnail" :src="post.better_featured_image.media_details.sizes.medium.source_url"/>
-                <h3 v-html="post.title.rendered"></h3>
-                <p v-html="post.excerpt.rendered"></p>
-                <p vhtml="post.media"></p>
-                <router-link :to="{ name: 'Post', params: { id: post.id, slug: post.slug }}">read more</router-link>
-                <a @click.prevent="navigateToPost({id: post.id, slug: post.slug})">read Post</a>
-            </li>
-        </ul>
-
+        <div v-if="isLoadingPosts" class="container">
+            <ul v-if="posts && posts.length" class="posts">
+                <li v-for="post of posts"
+                    key="post.index"
+                    class="post"
+                    @click.prevent="navigateToPost({id: post.id, slug: post.slug})">
+                    <img class="thumbnail" :src="post.better_featured_image.media_details.sizes.medium.source_url"/>
+                    <h3 v-html="post.title.rendered"></h3>
+                    <p v-html="post.excerpt.rendered"></p>
+                    <p vhtml="post.media"></p>
+                    <router-link :to="{ name: 'Post', params: { id: post.id, slug: post.slug }}">read more</router-link>
+                    <a @click.prevent="navigateToPost({id: post.id, slug: post.slug})">read Post</a>
+                </li>
+            </ul>
+        </div>
+        <div v-else class="container container--loading">
+            <h1 class="title is-1 has-text-centered has-text-primary has-text-weight-bold	">Loading Data...</h1>
+        </div>
         <ul v-if="errors && errors.length">
             <li v-for="error of errors">
                 {{error.message}}
@@ -41,13 +45,15 @@
     },
     computed: {
       ...mapState({
-        posts: state => state.posts
+        posts: state => state.posts,
+        isLoadingPosts: state => state.isLoading
       })
     },
     // Fetches posts when the component is created.
-    created () {
+    mounted () {
       if (!this.posts.length) {
-        this.loadPosts()
+        console.log('loading posts')
+        // this.loadPosts()
       }
     },
     methods: {
@@ -82,6 +88,15 @@
     }
     .container{
         margin-top: 0;
+    }
+    .container--loading{
+        width: 320px;
+        border: solid 1px $primary;
+        padding: 45px 0;
+        margin-top: 45px;
+    }
+    .logo{
+        margin: 15px 30px 15px 30px;
     }
     ul {
         list-style-type: none;

@@ -23,8 +23,8 @@ const store = new Vuex.Store({
     posts: []
   },
   mutations: {
-    [IS_LOADING] (state) {
-      state.loading = !state.loading
+    [IS_LOADING] (state, payload) {
+      state.loading = payload
     },
     [SHOW_MODAL] (state, payload) {
       state.showModal = payload
@@ -34,6 +34,9 @@ const store = new Vuex.Store({
     },
     [SHOW_SINGLE_POST] (state, payload) {
       state.postOnDisplay = payload
+    },
+    setLoading (state, payload) {
+      state.loading = payload
     }
   },
   actions: {
@@ -42,8 +45,14 @@ const store = new Vuex.Store({
       commit(SHOW_MODAL, payload)
     },
     loadPosts ({state, commit}) {
+      commit('setLoading', true)
+      console.log('store loadPosts')
       return api.getPosts().then((response) => {
         commit(POSTS_LOADED, response)
+        commit(IS_LOADING, false)
+      }).catch((error) => {
+        console.log(error)
+        commit('setLoading', false)
       })
     },
     loadSinglePosts ({state, commit}, id) {
