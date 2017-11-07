@@ -8,7 +8,7 @@
                     @click.prevent="navigateToPost({id: post.id, slug: post.slug})">
                     <img class="thumbnail" :src="post.better_featured_image.media_details.sizes.medium_large.source_url"/>
                     <div class="card--inner">
-                        <h3 class="is-size-3-mobile has-text-black-ter	has-text-weight-semibold	" v-html="post.title.rendered"></h3>
+                        <h3 v-html="post.title.rendered"></h3>
                         <p v-html="post.excerpt.rendered"></p>
                         <p vhtml="post.media"></p>
                         <a @click.prevent="navigateToPost({id: post.id, slug: post.slug})">read Post</a>
@@ -25,7 +25,9 @@
             <h2>have a good time</h2>
             <h2><strong>peace & love</strong></h2>
             <div class="container--loading">
+                <loader-animation></loader-animation>
                 <h1 class="title is-1 has-text-centered has-text-primary has-text-weight-bold	">Loading Data...</h1>
+
             </div>
         </div>
         <ul v-if="errors && errors.length">
@@ -39,8 +41,12 @@
 <script>
 //  import axios from 'axios'
   import { mapActions, mapState } from 'vuex'
+  import Loader from '@/components/Loader.vue'
 
   export default {
+    components: {
+      loaderAnimation: Loader
+    },
     data () {
       return {
         errors: []
@@ -62,11 +68,11 @@
     methods: {
       ...mapActions({
         loadPosts: 'loadPosts',
-        readPost: 'navigateToPost'
+        loadPost: 'navigateToPost'
       }),
       navigateToPost (e) {
         console.log(e.id, e.slug)
-        this.readPost(e.id)
+        this.loadPost(e.id)
         this.$router.push({name: 'Post', params: { slug: e.slug }})
       }
     }
@@ -86,6 +92,10 @@
         color: $secondary;
         text-align: center;
     }
+    h3{
+        font-size: $size-4;
+        font-weight: $weight-semibold;
+    }
     .padTop{
         color: $primary;
     }
@@ -94,7 +104,6 @@
     }
     .container--loading{
         width: 320px;
-        border: solid 1px $primary;
         padding: 45px 0;
         margin: 45px auto;
     }

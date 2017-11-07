@@ -1,82 +1,97 @@
 <template>
     <div class="router-view">
-        <nav class="navbar" role="navigation" aria-label="main navigation">
-            <a class="nav-item button is-link is-outlined" @click.prevent="toggleJson">{{ showJson ? 'Hide Json Response' : 'Show Json Response' }}</a>
-        </nav>
-        <div v-if="showJson" class="container is-fluid">
-            <div class="columns">
-                <div class="column">
-                    <h2>pure_taxonomies plugin</h2>
-                    <pre>{{taxonomy}}</pre>
-                </div>
-                <div class="column">
-                    <h2>pure_taxonomies plugin</h2>
-                    <pre>{{post}}</pre>
-                </div>
-                <div class="column">
-                    <h2>pure_taxonomies plugin</h2>
-                    <pre>{{taxonomy}}</pre>
+        <a class="post--next" @click.prevent="navigateToPost({id: nextPost.id, slug: nextPost.slug})">next >></a>
+        <h1 class="title title--post is-1 has-text-centered" v-html="post.title.rendered"></h1>
+        <div class="tags tags-category">
+            <span class="tag is-light">Kategorie:</span>
+            <span class="tag is-white" v-for="cat in taxonomy.categories" :class="'tag--' + cat.slug">{{cat.name}}</span>
+            <span class="tag is-light">Artist:</span>
+            <span class="tag tag--artist is-white" v-for="cat in taxonomy.artist">{{cat.name}}</span>
+            <span v-if="taxonomy.label" class="tag is-light">Label:</span>
+            <span v-if="taxonomy.label" class="tag tag--label is-white" v-for="cat in taxonomy.label">{{cat.name}}</span>
+        </div>
+        <div class="tile is-ancestor">
+            <div class="tile is-parent is-12">
+                <div class="tile is-child box">
+                    <div class="block is-flex">
+                        <tabs alignment="centered" :only-fade="false">
+                            <tab-pane label="Article" selected>
+                                <div class="container">
+                                    <figure class="image is-4x3">
+                                        <img :src="post.better_featured_image.media_details.sizes.large.source_url"
+                                             :width="post.better_featured_image.media_details.sizes.large.width"
+                                             :height="post.better_featured_image.media_details.sizes.large.height">
+                                    </figure>
+                                    <div class="post-content" v-html="post.content.rendered"></div>
+                                    <div class="box box--author">
+                                        <div class="media">
+                                            <div class="media-left">
+                                                <figure class="image is-48x48">
+                                                    <img :src="author.avatar_urls['48']" alt="Image">
+                                                </figure>
+                                            </div>
+                                            <div class="media-content">
+                                                <div class="content">
+                                                    <p>
+                                                        <strong>{{author.name}}</strong><br>
+                                                        <small class="post-date">{{ post.date | moment("DD.MM.YYYY") }}</small>
+                                                    </p>
+                                                </div>
+                                                <nav class="level is-mobile">
+                                                    <div class="level-left">
+                                                        <a class="level-item">
+                                                            <span class="icon is-small"><i class="fa fa-reply"></i></span>
+                                                        </a>
+                                                        <a class="level-item">
+                                                            <span class="icon is-small"><i class="fa fa-retweet"></i></span>
+                                                        </a>
+                                                        <a class="level-item">
+                                                            <span class="icon is-small"><i class="fa fa-heart"></i></span>
+                                                        </a>
+                                                    </div>
+                                                </nav>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </tab-pane>
+                            <tab-pane label="JSON All">
+                                    <h2 class="title is-1">Json Post</h2>
+                                    <pre>{{post}}</pre>
+                            </tab-pane>
+                            <tab-pane label="JSON Taxonomy" selected>
+                                <h2 class="title is-1">Json Section -> pure_taxonomies</h2>
+                                <pre>{{taxonomy}}</pre>
+                            </tab-pane>
+                        </tabs>
+                    </div>
                 </div>
             </div>
         </div>
-        <div v-else class="post container">
-            <h1 class="title is-1" v-html="post.title.rendered"></h1>
-            <figure class="image is-4x3">
-                <img :src="post.better_featured_image.media_details.sizes.large.source_url"
-                     :width="post.better_featured_image.media_details.sizes.large.width"
-                     :height="post.better_featured_image.media_details.sizes.large.height">
-            </figure>
-            <div class="post-content" v-html="post.content.rendered"></div>
-            <div class="box">
-                <div class="media">
-                    <div class="media-left">
-                        <figure class="image is-48x48">
-                            <img :src="author.avatar_urls['48']" alt="Image">
-                        </figure>
-                    </div>
-                    <div class="media-content">
-                        <div class="content">
-                            <p>
-                                <strong>{{author.name}}</strong><br>
-                                <small class="post-date">{{ post.date | moment("DD.MM.YYYY") }}</small>
-                            </p>
-                        </div>
-                        <nav class="level is-mobile">
-                            <div class="level-left">
-                                <a class="level-item">
-                                    <span class="icon is-small"><i class="fa fa-reply"></i></span>
-                                </a>
-                                <a class="level-item">
-                                    <span class="icon is-small"><i class="fa fa-retweet"></i></span>
-                                </a>
-                                <a class="level-item">
-                                    <span class="icon is-small"><i class="fa fa-heart"></i></span>
-                                </a>
-                            </div>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <button class="button is-link" @click.prevent="toggleJson">{{ showJson ? 'Hide Json Response' : 'Show Json Response' }}</button>
     </div>
 </template>
 
 <script type="text/babel">
-  import {mapState, mapActions} from 'vuex'
+  import {mapState, mapActions, mapGetters} from 'vuex'
+  import { Tabs, TabPane } from '@/components/tabs'
+
   export default {
     name: 'Post',
-    components: {},
+    components: {
+      Tabs,
+      TabPane
+    },
     data: function () {
       return {
-        post: {},
-        test: 'wuwu',
-        showJson: false
+        post: {}
       }
     },
     computed: {
       ...mapState({
         postId: state => state.postOnDisplay
+      }),
+      ...mapGetters({
+        nextPost: 'getNextPost'
       }),
       author () {
         return this.post._embedded.author[0]
@@ -85,26 +100,31 @@
         return this.post.pure_taxonomies
       }
     },
-    beforeCreate () {
-    },
     created () {
       // Check if post is loaded
       const slug = this.$route.params.slug
+      console.log('created:', slug)
       // const id = this.$store.state.postOnDisplay
       const id = this.$store.getters.getPostIdBySlug(slug)
       this.post = (id) ? this.$store.getters.getPostById(id) : this.loadPostBySlug(slug)
       console.log('post', this.post)
-      console.log('beforeCreate', slug, id)
+      console.log('Post.vue created', slug, id)
     },
-    mounted () {
-      console.log('mounted:', this.data)
+    beforeUpdate () {
+      const slug = this.$route.params.slug
+      const id = this.$store.getters.getPostIdBySlug(slug)
+      this.post = this.$store.getters.getPostById(id)
+      console.log('beforeupdate', slug)
     },
     methods: {
       ...mapActions({
-        loadPostBySlug: 'loadSinglePost'
+        loadPostBySlug: 'loadSinglePost',
+        getPost: 'navigateToPost'
       }),
-      toggleJson () {
-        this.showJson = !this.showJson
+      navigateToPost (e) {
+        console.log('navigateToPost', e.id, e.slug)
+        this.getPost(e.id)
+        this.$router.push({name: 'Post', params: { slug: e.slug }})
       }
     }
   }
@@ -119,5 +139,30 @@
     }
     .container{
         margin-bottom: 30px;
+    }
+    pre{
+        max-width: calc(100vw - 60px);
+    }
+    .title--post{
+        margin-left: 30px;
+        margin-right: 30px;
+        margin-bottom: 10px;
+    }
+    .box{
+        border-radius: 0;
+    }
+    .tags{
+        justify-content: center;
+        margin-bottom: 0;
+    }
+    .tag{
+        cursor: pointer;
+    }
+    .post--next{
+        text-align: right;
+        padding-right: 15px;
+        display: block;
+        color: $black;
+        font-size: 14px;
     }
 </style>

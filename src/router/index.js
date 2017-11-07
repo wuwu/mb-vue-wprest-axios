@@ -10,6 +10,6 @@ export default new Router({
   routes: [
     { path: '/', name: 'Hello', component: HelloWorld },
     { path: '/demo/videos', name: 'Videos', component: Videos },
-    { path: '/post/:slug', name: 'Post', component: Post }
+    { path: '/blog/:slug', name: 'Post', component: Post }
   ]
 })

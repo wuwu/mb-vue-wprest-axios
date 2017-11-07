@@ -6046,6 +6046,10 @@ void-elements@^2.0.0:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/void-elements/-/void-elements-2.0.1.tgz#c066afb582bb1cb4128d60ea92392e94d5e9dbec"
 
+vue-bulma-tabs@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/vue-bulma-tabs/-/vue-bulma-tabs-1.1.2.tgz#162f5a459a9bd90b5fba097d61bcb1c8823c2eb8"
+
 vue-hot-reload-api@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/vue-hot-reload-api/-/vue-hot-reload-api-2.2.0.tgz#9a21b35ced3634434a43ee80efb7350ea8fb206d"
