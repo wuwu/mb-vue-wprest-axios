@@ -10,8 +10,8 @@
                                 <polygon fill="#37B685" points="112 0 112 67.5 81 33.751" transform="matrix(-1 0 0 1 193 0)"/>
                             </g>
                         </svg>
-                        <small>musikblog.de</small>
                     </figure>
+                    <small>musikblog.de</small>
                 </router-link>
                 <a @click.prevent="onLogin" class="navbar-item is-hidden-desktop" href="#" target="_blank">
                   <span class="icon">
@@ -135,6 +135,11 @@
         display: flex;
         align-items: flex-start;
         flex-direction: column;
+        line-height: 12px;
+        small{
+            font-size: 10px;
+            font-weight: 700;
+        }
     }
     .button--login{
         border: none;
