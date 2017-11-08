@@ -32,23 +32,15 @@
             <div id="navMenuTransparentExample" class="navbar-menu" :class="{'is-active': active}">
                 <div class="navbar-start">
                     <div class="navbar-item has-dropdown is-hoverable">
-                        <a class="navbar-link " href="https://bulma.io/blog/">
-                            Blog
-                        </a>
+                        <router-link to="/" class="navbar-link">Blog</router-link>
                         <div id="blogDropdown" class="navbar-dropdown is-boxed" data-style="width: 18rem;">
-                            <a class="navbar-item" href="#">
-                                    <p>Roses are red – Links are blue</p>
-                            </a>
-
-                            <a class="navbar-item" href="#">
-                                    <p>New feature: list of tags</p>
-                            </a>
-                            <a class="navbar-item" href="#">
-                                    <p>New chart calculation</p>
-                            </a>
-                            <a class="navbar-item" href="#">
-                                More posts
-                            </a>
+                            <a class="navbar-item" href="#">News</a>
+                            <a class="navbar-item" href="#">Alben</a>
+                            <a class="navbar-item" href="#">Konzertberichte</a>
+                            <a class="navbar-item" href="#">Interviews</a>
+                            <a class="navbar-item" href="#">Videos</a>
+                            <a class="navbar-item" href="#">Artists</a>
+                            <a class="navbar-item" href="#">Label</a>
                             <hr class="navbar-divider">
                             <div class="navbar-item">
                                 <div class="navbar-content">
@@ -73,7 +65,7 @@
                             </div>
                         </div>
                     </div>
-                    <a class="navbar-link">Stream</a>
+                    <router-link to="/stream" class="navbar-link">Stream</router-link>
 
                 </div>
                 <div class="navbar-end">
