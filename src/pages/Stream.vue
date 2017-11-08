@@ -2,12 +2,18 @@
     <div class="container">
         <h1>Your Feed</h1>
         <p>using sample feed from stream.io</p>
-        <div>
-            <activity-card
-                    v-for="activity in activities"
-                    :key="activity.id"
-                    :activity="activity">
-            </activity-card>
+        <div class="columns">
+            <div class="column is-9 tweets">
+                <activity-card
+                        v-for="activity in activities"
+                        :key="activity.id"
+                        class="tweet"
+                        :activity="activity">
+                </activity-card>
+            </div>
+            <div class="column">
+                <h3 class="has-text-size-3 has-text-weight-bold">Create Activity:</h3>
+            </div>
         </div>
     </div>
 </template>
@@ -59,5 +65,21 @@
 </script>
 
 <style lang="scss" scoped>
-
+    .tweets{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .tweet{
+        flex-grow: 1;
+        width: 45%;
+    }
+    .tweet:nth-child(even) {
+         margin-top: 90px;
+        margin-left: 10px;
+    }
+    .tweet:nth-child(odd) {
+        margin-top: 30px;
+        margin-right: 10px;
+        margin-bottom: 60px;
+    }
 </style>

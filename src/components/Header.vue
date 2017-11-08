@@ -31,6 +31,7 @@
             </div>
             <div id="navMenuTransparentExample" class="navbar-menu" :class="{'is-active': active}">
                 <div class="navbar-start">
+                    <router-link to="/stream" class="navbar-link">Stream</router-link>
                     <div class="navbar-item has-dropdown is-hoverable">
                         <router-link to="/" class="navbar-link">Blog</router-link>
                         <div id="blogDropdown" class="navbar-dropdown is-boxed" data-style="width: 18rem;">
@@ -65,8 +66,6 @@
                             </div>
                         </div>
                     </div>
-                    <router-link to="/stream" class="navbar-link">Stream</router-link>
-
                 </div>
                 <div class="navbar-end">
                     <div class="navbar-item is-hidden-touch">
@@ -132,6 +131,9 @@
             font-size: 10px;
             font-weight: 700;
         }
+        &:hover{
+            color: $primary;
+         }
     }
     .button--login{
         border: none;
