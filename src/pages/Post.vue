@@ -83,7 +83,7 @@
     },
     data: function () {
       return {
-        post: {}
+        slug: this.$route.params.slug
       }
     },
     computed: {
@@ -98,23 +98,33 @@
       },
       taxonomy () {
         return this.post.pure_taxonomies
+      },
+      id () {
+        return this.$store.getters.getPostIdBySlug(this.slug)
+      },
+      post () {
+        return this.$store.getters.getPostById(this.postId)
       }
     },
     created () {
       // Check if post is loaded
-      const slug = this.$route.params.slug
-      console.log('created:', slug)
+      // const slug = this.$route.params.slug
+      // console.log('created:', slug)
       // const id = this.$store.state.postOnDisplay
-      const id = this.$store.getters.getPostIdBySlug(slug)
-      this.post = (id) ? this.$store.getters.getPostById(id) : this.loadPostBySlug(slug)
+      // const id = this.$store.getters.getPostIdBySlug(slug)
+      // this.post = (id) ? this.$store.getters.getPostById(id) : this.loadPostBySlug(slug)
       console.log('post', this.post)
-      console.log('Post.vue created', slug, id)
+      console.log('Post.vue created', this.slug, this.id)
     },
     beforeUpdate () {
       const slug = this.$route.params.slug
+      console.log('beforeupdate', slug)
       const id = this.$store.getters.getPostIdBySlug(slug)
       this.post = this.$store.getters.getPostById(id)
-      console.log('beforeupdate', slug)
+    },
+    updated () {
+      const slug = this.$route.params.slug
+      console.log('update', slug)
     },
     methods: {
       ...mapActions({
