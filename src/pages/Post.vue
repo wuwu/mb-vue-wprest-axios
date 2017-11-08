@@ -68,18 +68,21 @@
                 </div>
             </div>
         </div>
+        <scroll-top-button></scroll-top-button>
     </div>
 </template>
 
 <script type="text/babel">
   import {mapState, mapActions, mapGetters} from 'vuex'
   import { Tabs, TabPane } from '@/components/tabs'
+  import ScrollTopButton from '@/components/ScrollTopButton.vue'
 
   export default {
     name: 'Post',
     components: {
       Tabs,
-      TabPane
+      TabPane,
+      ScrollTopButton
     },
     data: function () {
       return {

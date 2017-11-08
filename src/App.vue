@@ -1,7 +1,7 @@
 <template>
     <div id="app">
         <app-header></app-header>
-        <router-view class="site-content"/>
+            <router-view class="site-content"/>
         <app-footer></app-footer>
         <div ref="loginModal" id="#netlify-modal"></div>
     </div>
@@ -72,4 +72,13 @@ export default {
     .site-content{
         flex: 1;
     }
+    .enter { transform: translateX(100%) }
+    .enter-to { transform: translateX(0) }
+    .slide-enter-active { position: absolute }
+
+    .leave { transform: translateX(0) }
+    .leave-to { transform: translateX(-100%) }
+
+    .slide-enter-active,
+    .slide-leave-active { transition: all 750ms ease-in-out }
 </style>
