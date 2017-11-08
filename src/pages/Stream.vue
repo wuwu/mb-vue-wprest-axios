@@ -30,18 +30,24 @@
     methods: {
       getActivities: function () {
         this.activities = []
-        let client = stream.connect(
-          process.env.STREAM_APP_KEY,
-          null,
-          process.env.STREAM_APP_ID
-        )
-        let feed = client.feed(
-          process.env.STREAM_FEED_GROUP,
-          process.env.STREAM_FEED_ID,
-          process.env.STREAM_FEED_READ_ONLY_TOKEN
-        )
-        feed.get().then(response => {
+// Initialize the client with your api key, no secret and your app id
+        var client = stream.connect('x98u2tzkqhz9', null, '30771')
+// For the feed group 'user' and user id 'eric' get the feed
+// The access token at the end is only needed for client side integrations
+        var ericFeed = client.feed('user', 'eric', 'LxwBA5qhvsHOw8WPxkmP_MwqFgs')
+// Add the activity to the feed
+        ericFeed.addActivity({
+          actor: 'eric',
+          tweet: 'Hello world',
+          verb: 'tweet',
+          object: 1
+        })
+        // Let Jessica's flat feed follow Eric's feed
+        const jessicaFlatFeed = client.feed('timeline', 'jessica', 'f_1uHxlrLJPoFhwtU3pcu_SgmQg')
+        jessicaFlatFeed.follow('user', 'eric')
+        jessicaFlatFeed.get({ limit: 10 }).then(response => {
           response['results'].map((a) => { this.activities.push(a) })
+          console.log('activityData', response.results)
         })
       }
     },

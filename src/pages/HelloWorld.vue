@@ -1,10 +1,10 @@
 <template>
     <div>
         <div v-if="!isLoadingPosts" class="container">
-            <ul v-if="posts && posts.length" class="posts">
-                <li v-for="post of posts"
+            <div v-if="posts && posts.length" class="posts columns is-multiline">
+                <div v-for="post of posts"
                     key="post.index"
-                    class="post"
+                    class="post column is-4"
                     @click.prevent="navigateToPost({id: post.id, slug: post.slug})">
                     <img class="thumbnail" :src="post.better_featured_image.media_details.sizes.medium_large.source_url"/>
                     <div class="card--inner">
@@ -13,8 +13,8 @@
                         <p vhtml="post.media"></p>
                         <a @click.prevent="navigateToPost({id: post.id, slug: post.slug})">read Post</a>
                     </div>
-                </li>
-            </ul>
+                </div>
+            </div>
         </div>
         <div v-else class="container">
             <h2 class="padTop">Entdecke neue Musik...</h2>
@@ -110,19 +110,8 @@
     .logo{
         margin: 45px 30px 45px 30px;
     }
-    ul {
-        list-style-type: none;
-        padding: 0;
-        display: flex;
-        flex-wrap: wrap;
-        max-width: 768px;
-        margin: 0 auto;
-    }
 
-    li {
-        display: inline-block;
-        margin: 0;
-        padding: 0 0 15px 0;
+    .post {
         cursor: pointer;
     }
     .thumbnail{
@@ -131,7 +120,9 @@
         /*filter: grayscale(1);*/
     }
     .card--inner{
-        margin: 0 15px;
+        @include mobile{
+            margin: 0 15px;
+        }
     }
     a {
         color: #35495E;
